@@ -15,7 +15,7 @@ print (str(age_in_years))
 print (type(age_in_years))
 #4. Створити змінну my_age, яка буде містити рядок “Му name is … I’m … years old”, де на замість пропусків буде підставлятись ваші імʼя та вік. Значення віку слід брати зі змінної age_in_years.
 
-my_age = 'My name is Nikola Im ' + (str)(age_in_years) + ' years old'
+my_age = 'My name is Nikola Im ' + str(age_in_years) + ' years old'
 print(my_age)
 
 #5. Створити змінну зі значенням 1. Використовуючи оператори порівняння, порівняти її із будь-якими іншими значеннями (мінімум 5 порівнянь) і перевірити вивід в інтерпретаторі.
