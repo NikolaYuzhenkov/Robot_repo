@@ -14,7 +14,7 @@
 #     json.dump(file_name, write_file)
 
 import json
-
+import re
 # Инициализируем словарь для телефонной книги
 phone_book_dict = {}
 
@@ -56,17 +56,21 @@ while True:
         if key in phone_book_dict:
             print(f"Контакт с именем {key} уже существует.")
         else:
-            phone_number = input(f"Введите номер для {key}: ")
-            if phone_number.isdigit():
-                phone_book_dict[key] = phone_number
-                print(f"Контакт {key} с номером {phone_number} добавлен.")
+            phone_number = input(f"Введите номер телефона для {key}: ")
+            # phone_validation = re.match(r'\+380[\d]+|380[\d]+|0[\d]+', phone_number)
 
-                # Сохраняем обновления в файл
-                with open(r"C:\Users\Nikola\Robot_repo\pythonProject\12\PhoneBookData.json", mode="w",
-                          encoding="utf-8") as write_file:
-                    json.dump(phone_book_dict, write_file, ensure_ascii=False, indent=4)
+            if (len(phone_number) >= 9 and len(phone_number) <= 14):
+                if re.match(r'\+380[\d]+|380[\d]+|0[\d]+', phone_number):
+                    phone_book_dict[key] = phone_number
+                    print(f"Контакт {key} с номером {phone_number} добавлен.")
+                    with open(r"C:\Users\Nikola\Robot_repo\pythonProject\12\PhoneBookData.json", mode="w",
+                              encoding="utf-8") as write_file:
+                        json.dump(phone_book_dict, write_file, ensure_ascii=False, indent=4)
+                else:
+                    print('Неверный формат номера, комманда "add" принимает следющие доступные форматы: "+380", "380", "0(код оператора)"')
             else:
-                print('Номер может содержать только числа')
+                print("Телефон должен содержать от 9 до 14 цифр")
+
 
     elif command == 'delete':  # delete <name>: удалить запись
         if key is None:

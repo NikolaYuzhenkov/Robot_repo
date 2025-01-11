@@ -46,5 +46,7 @@
 #
 # ДЛЯ ІМПОРТУ МОЖНА ВИКОРИСАТИ СТРУКТУРУ - from test import some_file І ВИКОРИСТОВУВАТИ ФУНКЦІЇ ЩО МІСЯТТЬСЯ В SOME_FILE.PY
 
-
+# from test_module import functions    # ІМПОРТУЄ ФАЙЛ З ФАЙЛУ
+#
+# functions.test_function()
 
